@@ -42,7 +42,6 @@ $baseUrl = getBaseUrl();
     <div class="logo">
         <img src="<?= $baseUrl ?>/img/logo.png" alt="V Rising logo">
     </div>
-    <p>TEST</p>
 
     <h1 itemprop="headline">Онлайн генератор Української локалізації для гри V Rising</h1>
 
