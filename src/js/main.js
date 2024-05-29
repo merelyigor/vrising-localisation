@@ -321,6 +321,7 @@ import '../css/style.css';
         let checkFileUrl = '/check-file.php';
 
         if (saveTime) {
+            downloadButtonServerWrap.style.display = 'block';
             downloadButtonServerWrap.querySelector('.txt-time')
                 .textContent = `Створено: ${new Date(saveTime).toLocaleString()}`;
             return;
