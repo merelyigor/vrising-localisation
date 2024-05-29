@@ -1,5 +1,6 @@
 import '../css/style.css';
 // # npm run build
+// # npm run watch
 
 (function () {
     let allFileStrings = {};
