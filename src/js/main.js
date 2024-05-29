@@ -7,6 +7,8 @@ import '../css/style.css';
     let fileUrl = null;
     const MAX_CONCURRENT_REQUESTS = 40;
     const downloadLink = document.getElementById('downloadLink');
+    const downloadButtonServerWrap = document.querySelector('.download-json-server-wrap');
+    const downloadButtonServer = document.querySelector('.download-json-server');
     const localStorageJson = localStorage.getItem('mainLocalizationArr');
 
     if (localStorageJson && localStorageJson.length > 100) {
@@ -246,9 +248,11 @@ import '../css/style.css';
         const saveTime = new Date().toISOString();
         localStorage.setItem('saveTime', saveTime);
 
+        // Створюємо Blob з JSON
         const blob = new Blob([jsonString], {type: 'application/json'});
-        fileUrl = URL.createObjectURL(blob);
+        const fileUrl = URL.createObjectURL(blob);
 
+        // Завантажуємо файл локально
         const a = document.createElement('a');
         a.href = fileUrl;
         a.download = 'Ukraine.json';
@@ -258,15 +262,19 @@ import '../css/style.css';
 
         URL.revokeObjectURL(fileUrl);
 
+        // Відправка JSON на сервер
+        uploadJsonToServer(blob);
+        check_json_file_exist(downloadButtonServerWrap, saveTime);
+
         // Після завершення процесу генерації, показуємо посилання на завантаження файлу
         if (downloadLink) {
-            // Показуємо дату та час збереження, якщо вони є
             let saveTimeTemp = localStorage.getItem('saveTime');
             if (saveTimeTemp) {
                 document.getElementById('save-info-text').style.display = 'flex';
                 displaySaveTime(saveTimeTemp);
             }
             downloadLink.style.display = 'inline';
+            downloadButtonServer.style.display = 'block';
         }
     }
 
@@ -290,6 +298,81 @@ import '../css/style.css';
             }, 1000);
         }
     }
+
+    function uploadJsonToServer(blob) {
+        const formData = new FormData();
+        formData.append('file', blob, 'Ukraine.json');
+
+        fetch('/save-json.php', {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log('File successfully uploaded:', data);
+            })
+            .catch(error => {
+                console.error('Error uploading file:', error);
+            });
+    }
+
+    function check_json_file_exist(downloadButtonServerWrap, saveTime = false) {
+        let checkFileUrl = '/check-file.php';
+
+        if (saveTime) {
+            downloadButtonServerWrap.querySelector('.txt-time')
+                .textContent = `Створено: ${new Date(saveTime).toLocaleString()}`;
+            return;
+        }
+
+        fetch(checkFileUrl)
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    // Якщо файл існує, показуємо кнопку
+                    downloadButtonServerWrap.style.display = 'block';
+                    // Додаємо дату та час створення файла до тексту кнопки
+                    downloadButtonServerWrap.querySelector('.txt-time')
+                        .textContent = `Створено: ${data.fileTime}`;
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
+
+    // Перевірка наявності json файлу на сервері, та завантаження його по кліку
+    (function (downloadButtonServer, downloadButtonServerWrap) {
+        // URL для перевірки наявності файлу на сервері
+        const checkFileUrl = '/check-file.php';
+
+        // AJAX запит для перевірки наявності файлу
+        check_json_file_exist(downloadButtonServerWrap);
+
+        // Обробник події кліку для завантаження файлу
+        downloadButtonServer.addEventListener('click', function () {
+            fetch(checkFileUrl)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        // Якщо файл існує, завантажуємо його
+                        const downloadLink = document.createElement('a');
+                        downloadLink.href = '/json-local/Ukraine.json';
+                        downloadLink.download = 'Ukraine.json';
+                        document.body.appendChild(downloadLink);
+                        downloadLink.click();
+                        document.body.removeChild(downloadLink);
+                    } else {
+                        // Відображаємо повідомлення про відсутність файлу
+                        alert('Файл не знайдено на сервері.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+    })(downloadButtonServer, downloadButtonServerWrap);
+
 
     if (downloadLink) {
         downloadLink.addEventListener('click', function (event) {

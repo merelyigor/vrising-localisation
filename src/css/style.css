@@ -15,6 +15,28 @@ body {
     position: relative;
 }
 
+.download-json-server-wrap {
+    display: none;
+    position: absolute;
+    width: 260px;
+}
+
+.download-json-server-wrap .download-json-server {
+    background-color: #8b0000;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    font-size: 16px;
+    padding: 10px 20px;
+    transition: background-color .3s;
+}
+
+.download-json-server-wrap .download-json-server:hover {
+    background-color: #08a608; /* Колір кнопки при наведенні */
+}
+
 h1, h2, h3, h4, p {
     color: #ff6666; /* Червоний колір для заголовків */
     text-shadow: 2px 2px 4px #000000; /* Тінь для тексту */
@@ -207,7 +229,7 @@ a:hover {
 }
 
 .logo img {
-    width: 90px;
+    width: 120px;
 }
 
 .button-wrap {
