@@ -12,9 +12,10 @@ body {
     padding: 0 0 75px 0;
     height: 100vh;
     display: block;
+    position: relative;
 }
 
-h1, h2, h4, p {
+h1, h2, h3, h4, p {
     color: #ff6666; /* Червоний колір для заголовків */
     text-shadow: 2px 2px 4px #000000; /* Тінь для тексту */
     font-size: 17px;
@@ -187,6 +188,22 @@ a:hover {
     max-width: calc(100% - 200px);
     margin: 20px auto;
     text-align: center;
+}
+
+.mono-banka {
+    position: absolute;
+    right: 100px;
+    top: 50px;
+    width: 290px;
+    font-size: 12px;
+}
+
+.mono-banka:hover {
+    text-decoration: none;
+}
+
+.mono-banka img {
+    width: 100px;
 }
 
 .logo img {

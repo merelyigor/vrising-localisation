@@ -39,6 +39,13 @@ $baseUrl = getBaseUrl();
 <body>
 <div class="content" itemscope itemtype="http://schema.org/Article">
 
+    <a class="mono-banka" target="_blank"
+       href="https://send.monobank.ua/jar/2gjrSnR7z6">
+        <img src="<?= $baseUrl ?>/img/mono-banka.png" alt="mono"><br>
+        Підтримайте проєкт по Ukrainian Twitch community server фінансово,
+        ці гроші підуть в першу чергу на оплату путужностей для сервера та розвиток проєкту!
+    </a>
+
     <div class="logo">
         <img src="<?= $baseUrl ?>/img/logo.png" alt="V Rising logo">
     </div>
@@ -50,6 +57,18 @@ $baseUrl = getBaseUrl();
         самий актуальний на данний момент файл Ukraine.json для локалізації
         гри V Rising
     </h2>
+
+    <h3>
+        На правах реклами хочу запропонувати вам доєднатися до гри на Українському сервері V Rising. <br>
+        Назва: [UA] Ukrainian Twitch community server (no raids) Start 08.05<br>
+        Приєднуйся до нашої дружньої спільноти, де ти будеш грати разом з українськими стрімерами та іншими учасниками.
+        В затишку, та комфортних умовах: без рейдів, токсичності та росіян.<br><br>
+        Цей сервер існує завдяки спільним зусиллям. Будемо вдячні за вашу підтримку та
+        <a target="_blank" href="https://send.monobank.ua/jar/2gjrSnR7z6">
+            допомогу в оплаті хостингу (посилання на банку MONO)
+        </a>.
+        Без цього, на жаль, проєкт доволі швидко закриється.
+    </h3>
 
     <div itemprop="articleBody">
         <p>
@@ -147,7 +166,7 @@ $baseUrl = getBaseUrl();
                 <i class="fab fa-telegram"></i>
             </a>
             <a href="https://github.com/merelyigor"
-                   target="_blank" title="Я на Github">
+               target="_blank" title="Я на Github">
                 <i class="fab fa-github"></i>
             </a>
         </div>
