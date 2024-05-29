@@ -19,6 +19,7 @@ class RequestsCrowdin
         ]);
 
         $this->usernames_translation_priority[] = 'merelyigor';
+        $this->usernames_translation_priority[] = 'tor187';
     }
 
     /**
