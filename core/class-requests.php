@@ -47,9 +47,9 @@ class RequestsCrowdin
         }
 
         # для тестування на одному файлі де мало строк перекладів!
-        return [
-            0=> $allFiles[0]
-        ];
+//        return [
+//            0=> $allFiles[0]
+//        ];
 
         return $allFiles;
     }
