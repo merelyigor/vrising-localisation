@@ -1,0 +1,30 @@
+name: Documentation
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - '*'
+  repository_dispatch:
+    types: [publish]
+
+jobs:
+  build-and-deploy-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.0
+
+      - name: Generate documentation
+        run: |
+          docker run --rm -v $(pwd):/data phpdoc/phpdoc:3 run -d src -t .phpdoc/build
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: .phpdoc/build

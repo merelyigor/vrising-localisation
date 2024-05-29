@@ -1,0 +1,46 @@
+{
+    "name": "crowdin/crowdin-api-client",
+    "description": "PHP client library for Crowdin API v2",
+    "version": "1.12.0",
+    "keywords": [
+        "crowdin",
+        "sdk",
+        "api",
+        "api-client",
+        "client"
+    ],
+    "homepage": "https://github.com/crowdin/crowdin-api-client-php",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Crowdin",
+            "homepage": "https://crowdin.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.1",
+        "ext-json": "*",
+        "guzzlehttp/guzzle": "^6.2 || ^7"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.3.0",
+        "phpunit/phpunit": "^7.5 || ^8.5 || ^9.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "CrowdinApiClient\\": "src/CrowdinApiClient"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "CrowdinApiClient\\Tests\\": "tests/CrowdinApiClient/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "CrowdinApiClient\\FrameworkSupport\\Laravel\\CrowdinServiceProvider"
+            ]
+        }
+    }
+}

@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /core/
+Allow: /
+Sitemap: https://vrising-ua.eremenko.top/sitemap.xml

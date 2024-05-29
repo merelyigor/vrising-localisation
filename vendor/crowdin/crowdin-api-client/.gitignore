@@ -1,0 +1,9 @@
+vendor
+.idea
+composer.lock
+reports
+coverage.xml
+.phpdoc
+phpdoc
+phpDocumentor.phar
+.phpunit.result.cache
