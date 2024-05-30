@@ -40,7 +40,7 @@ body .content {
     max-width: calc(100% - 70px);
   }
 }
-@media (max-width: 895px) {
+@media (max-width: 965px) {
   body .content {
     padding-top: 290px;
   }
@@ -57,7 +57,7 @@ body .content .mono-banka {
   width: 290px;
   font-size: 12px;
 }
-@media (max-width: 895px) {
+@media (max-width: 965px) {
   body .content .mono-banka {
     position: relative;
     right: 0;
@@ -70,7 +70,7 @@ body .content .mono-banka:hover {
 body .content .mono-banka img {
   width: 100px;
 }
-@media (max-width: 895px) {
+@media (max-width: 965px) {
   body .content .logo {
     position: absolute;
     top: 15px;
