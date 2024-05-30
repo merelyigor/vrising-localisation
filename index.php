@@ -42,8 +42,9 @@ $baseUrl = getBaseUrl();
     <a class="mono-banka" target="_blank"
        href="https://send.monobank.ua/jar/2gjrSnR7z6">
         <img src="<?= $baseUrl ?>/img/mono-banka.png" alt="mono"><br>
-        Підтримайте проєкт по Ukrainian Twitch community server фінансово,
-        ці гроші підуть в першу чергу на оплату путужностей для сервера та розвиток проєкту!
+        Підтримайте проєкт Ukrainian Twitch Community Server фінансово!
+        Ваші внески підуть на оплату серверних потужностей та розвиток спільноти.
+        Разом ми зможемо зробити більше!
     </a>
 
     <div class="download-json-server-wrap">
@@ -68,8 +69,9 @@ $baseUrl = getBaseUrl();
     </h2>
 
     <h3>
-        На правах реклами хочу запропонувати вам доєднатися до гри на Українському сервері V Rising. <br>
-        Назва: [UA] Ukrainian Twitch community server (no raids) Start 08.05<br>
+        Запрошую вас приєднатися до гри на Українському сервері V Rising!<br>
+        Назва: [UA] Ukrainian Twitch Community Server (no raids)
+        Старт: 08.05<br>
         Приєднуйся до нашої дружньої спільноти, де ти будеш грати разом з українськими стрімерами та іншими учасниками.
         В затишку, та комфортних умовах: без рейдів, токсичності та росіян.<br><br>
         Цей сервер існує завдяки спільним зусиллям. Будемо вдячні за вашу підтримку та
