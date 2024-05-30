@@ -23,6 +23,15 @@ module.exports = (env, argv) => {
                         'css-loader',
                     ],
                 },
+                {
+                    test: /\.scss$/,
+                    include: path.resolve(__dirname, 'src/scss'),
+                    use: [
+                        MiniCssExtractPlugin.loader,
+                        'css-loader',
+                        'sass-loader',
+                    ],
+                },
             ],
         },
         plugins: [

@@ -1,4 +1,5 @@
 import '../css/style.css';
+import '../scss/style.scss';
 // # npm run build
 // # npm run watch
 
@@ -29,10 +30,10 @@ import '../css/style.css';
 
         if (textBlock.classList.contains('expanded')) {
             textBlock.classList.remove('expanded');
-            toggleButton.textContent = 'Показати все';
+            toggleButton.textContent = '→ Показати все ←';
         } else {
             textBlock.classList.add('expanded');
-            toggleButton.textContent = 'Показати менше';
+            toggleButton.textContent = '→ Показати менше ←';
         }
     });
 
