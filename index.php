@@ -71,7 +71,7 @@ $baseUrl = getBaseUrl();
         <div class="ukr-server-info-wrap">
             <h3>
                 Запрошую вас приєднатися до гри на Українському сервері V Rising!<br>
-                Назва: [UA] Ukrainian Twitch Community Server (no raids)
+                Назва: <span class="color-server">[UA] Ukrainian Twitch Community Server (no raids)</span>
                 Старт: 08.05<br>
                 Приєднуйся до нашої дружньої спільноти, де ти будеш грати разом з українськими стрімерами та іншими учасниками.
                 В затишку, та комфортних умовах: без рейдів, токсичності та росіян.<br><br>

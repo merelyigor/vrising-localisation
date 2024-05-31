@@ -231,6 +231,9 @@ body .content h1, body .content h2, body .content h3, body .content h4, body .co
     font-size: 12px;
   }
 }
+body .content h1 .color-server, body .content h2 .color-server, body .content h3 .color-server, body .content h4 .color-server, body .content p .color-server {
+  color: yellow;
+}
 body .content h1 {
   font-size: 22px;
 }
