@@ -2,6 +2,8 @@
 
 $targetFile = "./json-local/Ukraine.json";
 
+var_dump(file_exists('/'));
+
 if (file_exists($targetFile)) {
     $fileTime = date("d/m/Y, H:i:s", filemtime($targetFile));
     echo json_encode([
