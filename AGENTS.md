@@ -29,9 +29,32 @@
   `.serena/project.yml` один раз і виправити repo-local конфіг у Git. Global
   blocker або дві невдалі спроби: без silent fallback, потрібен дозвіл. Serena
   не замінює `php -l`, build і runtime checks.
+- **Context7 (зовнішня документація)**: використовувати лише коли відповідь залежить
+  від API зовнішньої бібліотеки/фреймворку і ризик вигаданого API/параметра реальний.
+  Джерело істини №1 — код проєкту і фактично встановлені версії (lock-файли,
+  `vendor/`, `node_modules/`); при розбіжності діє встановлений код, не документація.
+  Для Docker/Nginx/bash/`.env`/YAML і того, що вже є в репозиторії, canonical path —
+  `rg` + targeted reads. Сервер зареєстрований глобально в клієнтах, тому проєктний
+  конфіг його не дублює, а `CONTEXT7_API_KEY` не хардкодиться.
+- **Playwright (тільки web/UI)**: перевірка сторінки після змін, репродукція UI-баґу,
+  console/network errors, скріншоти, форми й навігація, smoke-тест admin/frontend. Для
+  backend, Docker, bash, SQL і аналізу коду не застосовувати — там він лише додає tool
+  schemas, з'їдає контекст і провокує хибні tool calls. Спершу дешевша перевірка
+  (HTTP-статус, логи, тести, статичний аналіз); браузер — коли факт інакше не отримати.
+  За замовчуванням ВИМКНЕНИЙ і працює лише в агенті `browser-test`: Claude Code —
+  inline `mcpServers` у frontmatter агента; OpenCode — `mcp.playwright.enabled` на час
+  UI-роботи, `playwright*` дозволений тільки цьому агентові; Codex — `enabled = false`
+  поза UI-задачею. Профіль `--isolated`, тому логін робити формою в межах сесії.
+  Production у браузері — read-only; форми, збереження, публікації й адмін-дії на
+  проді — лише з явним дозволом. Браузер не замінює тести: причину баґу підтверджувати
+  кодом і логами.
+- **Shadcn/UI**: стек (PHP + vanilla frontend) не є сумісним React/Tailwind
+  UI-контуром, тому Shadcn тут не застосовується — canonical UI system лишається наявна.
+  Розглядати Shadcn лише після узгодженого плану інтеграції, без паралельної design
+  system.
 - **OpenCode Zen / безкоштовні моделі**: при питаннях щодо вибору моделі, лімітів,
   безпеки або порівняння — спочатку інфра-документація
-  [`merely-server-infra/docs/OPENCODE-ZEN-MODELS.md`](../../../docs/OPENCODE-ZEN-MODELS.md),
+  `merely-server-infra/docs/OPENCODE-ZEN-MODELS.md`,
   потім зовнішні джерела.
 
 ## 5) Crowdin API [MUST]
