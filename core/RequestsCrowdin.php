@@ -15,7 +15,7 @@ class RequestsCrowdin
     public function __construct()
     {
         $this->crowdin = new Crowdin([
-            'access_token' => API_KEY,
+            'access_token' => getenv('CROWDIN_API_KEY'),
         ]);
 
         $this->usernames_translation_priority[] = 'merelyigor';

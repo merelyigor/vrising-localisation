@@ -18,7 +18,7 @@
 ## 3) Контекст і архітектура [MUST]
 - Інструмент українізації V Rising: PHP-бекенд (`core/*.php`) + JS/SCSS фронт, зібраний Webpack (`webpack.config.js`, `src/*` → `public/assets/*`).
 - Джерело правди для перекладів — **Crowdin** (проєкт `PROJECT_ID = 519216`, `core/all-include.php`), не локальна БД: цей проєкт БД не використовує взагалі.
-- `core/class-requests.php` (`RequestsCrowdin`) — обгортка над `crowdin/crowdin-api-client`; `core/api.core.php` — тонкий HTTP-роутер над GET-параметрами, що викликає цю обгортку.
+- `core/RequestsCrowdin.php` (`RequestsCrowdin`) — обгортка над `crowdin/crowdin-api-client`; `core/api.core.php` — тонкий HTTP-роутер над GET-параметрами, що викликає цю обгортку.
 - `json-local/` — локальний кеш/експорт перекладів у JSON; `save-json.php` приймає завантаження файлу і БЕЗУМОВНО перезаписує файл із тим самим імʼям.
 - Local: `localisation-vrising-ua.eremenko.dev`. Production: `localisation-vrising-ua.eremenko.top`.
 
@@ -37,7 +37,7 @@
 ## 5) Crowdin API [MUST]
 - Crowdin — зовнішній rate-limited сервіс; не робити масові/циклічні запити без потреби, кешувати результат локально (`json-local/`), а не перезапитувати те саме повторно.
 - Токен доступу до Crowdin (`API_KEY` у `core/all-include.php`) НЕ хардкодити далі: нову або змінену інтеграцію писати проти ENV-змінної, а не проти константи у файлі. Наявний хардкод — відомий борг, не приклад для копіювання.
-- Не змінювати `usernames_translation_priority` (`class-requests.php`) без явного запиту — впливає на пріоритет чиїх перекладів показує інструмент.
+- Не змінювати `usernames_translation_priority` (`RequestsCrowdin.php`) без явного запиту — впливає на пріоритет чиїх перекладів показує інструмент.
 
 ## 6) Безпека [MUST]
 - Не хардкодити нові секрети/ключі/паролі; існуючі — не копіювати в інші файли.
