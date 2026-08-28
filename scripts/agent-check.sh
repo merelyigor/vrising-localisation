@@ -179,13 +179,22 @@ case "$PROFILE" in
         check_rules
         check_frontend
         ;;
+    # Headless-інспекції JetBrains. Окремий профіль, а не частина `full`: інспектор
+    # не стартує при відкритій IDE (`Only one instance…`) і чесно виходить кодом 2,
+    # тому в щоденній роботі інспекції робить агент через MCP phpstorm lint_files.
+    inspect)
+        # Частина гейтів робить `shift` перед `case`, частина ні · без цієї
+        # перевірки ім'я профілю поїхало б у скрипт як «тека inspect».
+        [ "${1:-}" = "inspect" ] && shift
+        exec bash scripts/inspect-code.sh "$@"
+        ;;
     full)
         check_rules
         check_php_lint
         check_frontend
         ;;
     *)
-        printf 'Usage: %s {preflight|docs|php|frontend|full}\n' "$0" >&2
+        printf 'Usage: %s {preflight|docs|php|frontend|inspect [тека]|full}\n' "$0" >&2
         exit 2
         ;;
 esac
