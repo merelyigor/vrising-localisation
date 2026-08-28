@@ -1,8 +1,15 @@
 {
   "mcpServers": {
     "serena": {
-      "type": "http",
-      "url": "http://127.0.0.1:8017/mcp"
+      "command": "/Users/igor/.local/bin/serena",
+      "args": [
+        "start-mcp-server",
+        "--context",
+        "claude-code",
+        "--project-from-cwd",
+        "--open-web-dashboard",
+        "false"
+      ]
     }
   }
 }
