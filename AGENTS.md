@@ -79,6 +79,18 @@ bash scripts/agent-check.sh full         # усе разом
 ## 7. Інструменти
 
 - Serena — primary path для refactoring і references; route-параметри, Webpack і конфіги — `rg` + targeted reads (§4).
+- Serena дає виграш лише на СИМВОЛЬНИХ задачах, бо повертає один символ або список
+  посилань замість файлу цілком: `get_symbols_overview`, `find_symbol`,
+  `find_referencing_symbols`, `find_declaration`, `find_implementations`,
+  `get_diagnostics_for_file` і символьні правки `replace_symbol_body`,
+  `insert_before_symbol`, `insert_after_symbol`, `rename_symbol`, `safe_delete_symbol`.
+- Через Serena НЕ читати, не шукати й не писати текст: `read_file`, `list_dir`,
+  `find_file`, `search_for_pattern`, `replace_content`, `replace_in_files`,
+  `create_text_file` і memories роблять те саме, що `rg` і звичайні читання/правки,
+  але дорожче й без переваги. `execute_shell_command` ЗАБОРОНЕНА: guardrails
+  перехоплюють лише Bash-інструмент, тому через неї руйнівна команда пройшла б повз
+  механічний захист. Без встановлених `vendor/`/`node_modules` символи не
+  резолвляться · спершу залежності, потім висновки.
 - Shadcn/UI: стек PHP + vanilla frontend **не є сумісним React/Tailwind контуром**, тому Shadcn тут не застосовується (§4).
 - Context7 — доречний саме тут для API `crowdin/crowdin-api-client`, з пріоритетом версії з `composer.lock`.
 - Браузер — після `php -l`, логів і прямих запитів до Crowdin API.
