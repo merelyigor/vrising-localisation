@@ -93,6 +93,7 @@ bash scripts/agent-check.sh full         # усе разом
   резолвляться · спершу залежності, потім висновки.
 - Shadcn/UI: стек PHP + vanilla frontend **не є сумісним React/Tailwind контуром**, тому Shadcn тут не застосовується (§4).
 - Context7 — доречний саме тут для API `crowdin/crowdin-api-client`, з пріоритетом версії з `composer.lock` (§4.3).
+- Скіли MCP (процедури й межі, завантажувати перед відповідною задачею): [mcp-context7](.claude/skills/mcp-context7/SKILL.md), [mcp-playwright](.claude/skills/mcp-playwright/SKILL.md), [browser-research](.claude/skills/browser-research/SKILL.md), [mcp-jetbrains](.claude/skills/mcp-jetbrains/SKILL.md).
 - Браузер — після `php -l`, логів і прямих запитів до Crowdin API. Інструмент — Playwright MCP (§4.4).
 
 ## 8. Слабкі та локальні моделі
