@@ -92,8 +92,8 @@ bash scripts/agent-check.sh full         # усе разом
   механічний захист. Без встановлених `vendor/`/`node_modules` символи не
   резолвляться · спершу залежності, потім висновки.
 - Shadcn/UI: стек PHP + vanilla frontend **не є сумісним React/Tailwind контуром**, тому Shadcn тут не застосовується (§4).
-- Context7 — доречний саме тут для API `crowdin/crowdin-api-client`, з пріоритетом версії з `composer.lock`.
-- Браузер — після `php -l`, логів і прямих запитів до Crowdin API.
+- Context7 — доречний саме тут для API `crowdin/crowdin-api-client`, з пріоритетом версії з `composer.lock` (§4.3).
+- Браузер — після `php -l`, логів і прямих запитів до Crowdin API. Інструмент — Playwright MCP (§4.4).
 
 ## 8. Слабкі та локальні моделі
 
