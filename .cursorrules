@@ -94,7 +94,16 @@ bash scripts/agent-check.sh full         # усе разом
 - Shadcn/UI: стек PHP + vanilla frontend **не є сумісним React/Tailwind контуром**, тому Shadcn тут не застосовується (§4).
 - Context7 — доречний саме тут для API `crowdin/crowdin-api-client`, з пріоритетом версії з `composer.lock` (§4.3).
 - Скіли MCP (процедури й межі, завантажувати перед відповідною задачею): [mcp-context7](.claude/skills/mcp-context7/SKILL.md), [mcp-playwright](.claude/skills/mcp-playwright/SKILL.md), [browser-research](.claude/skills/browser-research/SKILL.md), [mcp-jetbrains](.claude/skills/mcp-jetbrains/SKILL.md).
-- Graphify (knowledge graph): питання «як це працює» і «що з чим звʼязано» — спершу `graphify query`, а не широкий `rg`; граф і звіт лежать у `.graphify/` і закомічені, решта стану похідна. Скіл — [graphify](.claude/skills/graphify/SKILL.md).
+- Graphify (knowledge graph) · коли САМЕ застосовувати: питання про структуру —
+  «як це працює», «що з чим звʼязано», «де це взагалі реалізовано», «що зламається,
+  якщо змінити X». Тоді спершу `graphify query "<питання>"`, `graphify path "<A>" "<B>"`
+  або `graphify explain "<вузол>"`, і лише потім широкий `rg` чи читання файлів цілком.
+- Graphify · коли НЕ застосовувати: точкова правка у відомому файлі; конфіги, Docker,
+  Nginx, bash, `.env`, YAML; питання про поведінку в рантаймі (там логи й тести).
+  Немає `.graphify/graph.json` у цьому наборі — граф не будувати «про запас»: сказати
+  про це прямо й іти через `rg` + targeted reads. Граф не є джерелом істини про код:
+  після змін він стейл, і це називати прямо, а причину підтверджувати кодом або логом.
+  Процедура, побудова й межі — скіл [graphify](.claude/skills/graphify/SKILL.md).
 - Браузер — після `php -l`, логів і прямих запитів до Crowdin API. Інструмент — Playwright MCP (§4.4).
 
 ## 8. Слабкі та локальні моделі
