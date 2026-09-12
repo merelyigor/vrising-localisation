@@ -84,6 +84,19 @@ check_rules() {
 
     test -f "$RULE_REFERENCE" || fail "немає нормативного довідника $RULE_REFERENCE"
 
+    # `core.hooksPath` не версіонується git-ом за задумом (клон не має виконувати
+    # чужі хуки), тому після свіжого клону хук існує файлом, але не працює. Тут це
+    # ловиться, а вмикається однією командою · зокрема
+    # `bash ../../../scripts/enable-project-hooks.sh` з дерева інфри.
+    if [ -f .githooks/commit-msg ]; then
+        local hooks_path
+        hooks_path="$(git config core.hooksPath 2>/dev/null || true)"
+        if [ "$hooks_path" != '.githooks' ]; then
+            fail "core.hooksPath='${hooks_path:-не задано}' замість '.githooks' · увімкни: git config core.hooksPath .githooks"
+        fi
+        note 'git-хуки увімкнені (core.hooksPath=.githooks)'
+    fi
+
     local map_lines
     map_lines="$(wc -l < AGENTS.md | tr -d ' ')"
     if [ "$map_lines" -gt "$RULE_MAP_MAX_LINES" ]; then
