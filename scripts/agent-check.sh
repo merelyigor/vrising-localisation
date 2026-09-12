@@ -88,7 +88,7 @@ check_rules() {
     # чужі хуки), тому після свіжого клону хук існує файлом, але не працює. Тут це
     # ловиться, а вмикається однією командою · зокрема
     # `bash ../../../scripts/enable-project-hooks.sh` з дерева інфри.
-    if [ -f .githooks/commit-msg ]; then
+    if [ -f .githooks/commit-msg ] && [ -z "${CI:-}" ]; then
         local hooks_path
         hooks_path="$(git config core.hooksPath 2>/dev/null || true)"
         if [ "$hooks_path" != '.githooks' ]; then
