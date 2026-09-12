@@ -94,6 +94,7 @@ bash scripts/agent-check.sh full         # усе разом
 - Shadcn/UI: стек PHP + vanilla frontend **не є сумісним React/Tailwind контуром**, тому Shadcn тут не застосовується (§4).
 - Context7 — доречний саме тут для API `crowdin/crowdin-api-client`, з пріоритетом версії з `composer.lock` (§4.3).
 - Скіли MCP (процедури й межі, завантажувати перед відповідною задачею): [mcp-context7](.claude/skills/mcp-context7/SKILL.md), [mcp-playwright](.claude/skills/mcp-playwright/SKILL.md), [browser-research](.claude/skills/browser-research/SKILL.md), [mcp-jetbrains](.claude/skills/mcp-jetbrains/SKILL.md).
+- Скіли — механізм Claude. Codex, OpenCode, Cursor і Qwen їх не завантажують, тому там ту саму процедуру читають файлом: `.claude/skills/<назва>/SKILL.md` цього ж набору. Правило, яке посилається на скіл, діє в усіх клієнтів однаково.
 - Graphify (knowledge graph) · коли САМЕ застосовувати: питання про структуру —
   «як це працює», «що з чим звʼязано», «де це взагалі реалізовано», «що зламається,
   якщо змінити X». Тоді спершу `graphify query "<питання>"`, `graphify path "<A>" "<B>"`
