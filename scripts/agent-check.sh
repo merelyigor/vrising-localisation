@@ -22,12 +22,9 @@ readonly PHP_CONTAINER="${AGENT_PHP_CONTAINER:-vrising-localisation-php-fpm}"
 readonly RULE_MIRRORS=(AGENTS.md .cursorrules CLAUDE.md QWEN.md)
 readonly RULE_REFERENCE='docs/AI_AGENT_RULES_REFERENCE.md'
 # Коротка карта мусить лишатись картою, а не знову розростись у довідник.
-# Політика розміру карти єдина для всіх наборів (рішення власника 2026-09-12):
-# ціль 200 рядків, до 300 · погано, але допустимо, 351+ · стоп. Жорсткий провал
-# на 201 рядку робив масовий розкат правил небезпечним: набір із найтіснішою
-# картою ламався мовчки й виявлявся лише тоді, коли хтось відкривав репозиторій.
-readonly RULE_MAP_TARGET_LINES=200
-readonly RULE_MAP_SOFT_LINES=300
+# Межа розміру карти єдина для всіх наборів (рішення власника 2026-09-17): будь-який
+# розмір до 349 рядків прийнятний, стоп лише на 351+. Попереджень нижче стопу немає
+# навмисно · саме вони штовхали різати текст правил і псували їх якість.
 readonly RULE_MAP_MAX_LINES=350
 
 fail() {
@@ -101,12 +98,6 @@ check_rules() {
     map_lines="$(wc -l < AGENTS.md | tr -d ' ')"
     if [ "$map_lines" -gt "$RULE_MAP_MAX_LINES" ]; then
         fail "AGENTS.md розрісся до $map_lines рядків (стоп $RULE_MAP_MAX_LINES); деталі — у $RULE_REFERENCE"
-    elif [ "$map_lines" -gt "$RULE_MAP_SOFT_LINES" ]; then
-        note "AGENTS.md: $map_lines рядків · червона зона понад $RULE_MAP_SOFT_LINES, скорочувати"
-    elif [ "$map_lines" -gt "$RULE_MAP_TARGET_LINES" ]; then
-        note "AGENTS.md: $map_lines рядків · понад ціль $RULE_MAP_TARGET_LINES, ще допустимо"
-    else
-        note "AGENTS.md: $map_lines рядків (ціль $RULE_MAP_TARGET_LINES)"
     fi
 
     local duplicate
