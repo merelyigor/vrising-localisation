@@ -128,8 +128,7 @@ bash scripts/agent-check.sh full         # усе разом
 Після двох однакових невдач — зміна підходу, а не третя спроба. Без необов'язкового
 рефакторингу й нових залежностей. Фінально — перегляд diff на secrets і scope drift.
 
-Довідник моделей і прийомний набір для нової моделі — в інфра-репозиторії:
-`merely-server-infra/docs/AI-AGENT-MODELS.md` і `docs/AGENT-MODEL-QUALIFICATION.md`.
+Довідник моделей — в інфра-репозиторії: `merely-server-infra/docs/AI-AGENT-MODELS.md`.
 
 ## 9. Інспекції IDE [MUST]
 Після будь-якої зміни коду прожени інспекції IDE по ЗМІНЕНИХ файлах і доповідай
